@@ -40,8 +40,7 @@ public with sharing class TriggerTest {
                 accountTypeProspect.add(new Account(Name = 'Test Account ' + i));
             } else {
                 accountTypeNotChange.add(new Account(Name = 'Test Account ' + i, Type = 'Customer'));
-            }
-            
+            }            
         }
         
         // Perform the test
