@@ -48,9 +48,15 @@ public class AccountTriggerHelper {
             
             relatedCons.add(newContact);
         }
-
+        
         try {
-            insert relatedCons;
+            Database.SaveResult[] results = Database.insert(relatedCons, false);
+            for (Integer i = 0; i < results.size(); i++) {
+                if (!results[i].isSuccess()) {
+                    Database.Error error = results[i].getErrors()[0];
+                    newAccounts[i].addError('Failed to create contact: ' + error.getMessage());
+                }
+            }
         } catch (DmlException e) {
             System.debug('Error inserting contacts: ' + e.getMessage());
             

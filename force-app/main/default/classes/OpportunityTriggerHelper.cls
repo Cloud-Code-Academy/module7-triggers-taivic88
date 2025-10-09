@@ -7,7 +7,7 @@ public with sharing class OpportunityTriggerHelper {
             }
 
             for (Opportunity opp : opps) {
-                if (opp.Amount != null && opp.Amount <= 5000) {
+                if (opp.Amount <= 5000) {
                     opp.addError('Opportunity amount must be greater than 5000');
                 }
             }
